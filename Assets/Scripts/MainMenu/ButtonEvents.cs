@@ -17,6 +17,6 @@ public class ButtonEvents : MonoBehaviour {
 
     public void ClickPlay()
     {
-        SceneManager.LoadScene("test");
+        SceneManager.LoadScene("Game");
     }
 }
