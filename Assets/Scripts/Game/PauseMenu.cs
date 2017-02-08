@@ -32,15 +32,8 @@ public class PauseMenu : MonoBehaviour {
 
     public void ClickQuit()
     {
-        paused = !paused;
-        if (paused)
-        {
-            Time.timeScale = 0;
-        }
-        else {
-            Time.timeScale = 1;
-        }
-
+        // Restore regular timescale
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 }
