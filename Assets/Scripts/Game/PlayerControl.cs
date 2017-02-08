@@ -7,6 +7,8 @@ public class PlayerControl : MonoBehaviour {
 
     Rigidbody2D body;
     public float speed = 5;
+    public Vector2 moveVec;
+    public static Vector3 lookVec;
 
 	void Start ()
     {
@@ -15,8 +17,8 @@ public class PlayerControl : MonoBehaviour {
 
 	void FixedUpdate ()
     {
-        Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal_Movement"), CrossPlatformInputManager.GetAxis("Vertical_Movement")) * speed;
-        Vector3 lookVec = new Vector3(CrossPlatformInputManager.GetAxis("Horizontal_Aiming"), CrossPlatformInputManager.GetAxis("Vertical_Aiming"), 4096);
+        moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal_Movement"), CrossPlatformInputManager.GetAxis("Vertical_Movement")) * speed;
+        lookVec = new Vector3(CrossPlatformInputManager.GetAxis("Horizontal_Aiming"), CrossPlatformInputManager.GetAxis("Vertical_Aiming"), 4096);
 
         //body.AddForce(moveVec);
         if (lookVec.x != 0 && lookVec.y != 0)

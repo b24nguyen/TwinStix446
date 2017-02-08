@@ -14,10 +14,10 @@ public class PlayerBehavior : MonoBehaviour {
 		
 	}
 
-    private void Update()
+    public void Update()
     {
 
-        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        if (PlayerControl.lookVec.x != 0 && PlayerControl.lookVec.y != 0 && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
