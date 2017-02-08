@@ -317,6 +317,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   moveVec: {x: 0, y: 0}
+  lookVec: {x: 0, y: 0, z: 0}
+  shot: {fileID: 1757038119371508, guid: 766bc7cebfd9a8a4fa99ed40f2068b27, type: 2}
+  shotSpawn: {fileID: 1031165082}
+  fireRate: 0.2
 --- !u!114 &942635756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,9 +332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db91c9f561762b4884263dd0e972df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1757038119371508, guid: 766bc7cebfd9a8a4fa99ed40f2068b27, type: 2}
-  shotSpawn: {fileID: 1031165082}
-  fireRate: 0.25
 --- !u!1 &1031165081
 GameObject:
   m_ObjectHideFlags: 0
