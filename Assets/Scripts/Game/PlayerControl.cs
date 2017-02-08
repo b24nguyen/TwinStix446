@@ -12,7 +12,7 @@ public class PlayerControl : MonoBehaviour {
     {
         body = this.GetComponent<Rigidbody2D>();
 	}
-	
+
 	void FixedUpdate ()
     {
         Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal_Movement"), CrossPlatformInputManager.GetAxis("Vertical_Movement")) * speed;
