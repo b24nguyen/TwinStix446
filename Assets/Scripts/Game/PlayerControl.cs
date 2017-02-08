@@ -8,9 +8,15 @@ public class PlayerControl : MonoBehaviour {
     Rigidbody2D body;
     public float speed = 5;
     public Vector2 moveVec;
-    public static Vector3 lookVec;
+    public Vector3 lookVec;
 
-	void Start ()
+    // Required for the creation of bullet type objects
+    public GameObject shot;
+    public Transform shotSpawn;
+    public float fireRate;
+    private float nextFire;
+
+    void Start ()
     {
         body = this.GetComponent<Rigidbody2D>();
 	}
@@ -25,4 +31,16 @@ public class PlayerControl : MonoBehaviour {
             transform.rotation = Quaternion.LookRotation(lookVec, Vector3.back);
         body.velocity = moveVec;
 	}
+
+    public void Update()
+    {
+        // Checking if the right stick is moving in order to shoot
+        if (lookVec.x != 0 && lookVec.y != 0 && Time.time > nextFire)
+        {
+            // Delay between shots
+            nextFire = Time.time + fireRate;
+            // Create a shot object
+            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+        }
+    }
 }

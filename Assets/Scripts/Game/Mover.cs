@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour {
     public float speed;
-	// Use this for initialization
+	
+    // Sets the direction of the shots once they are created
 	void Start () {
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.velocity = transform.up * speed;
