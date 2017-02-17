@@ -7,7 +7,7 @@ public class Mover : MonoBehaviour {
 	
     // Sets the direction of the shots once they are created
 	void Start () {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Rigidbody rb = GetComponent<Rigidbody>();
         rb.velocity = transform.up * speed;
 	}
 	
