@@ -231,7 +231,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4906561668978052, guid: 6535af990657f664c9d5672f39c3466d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4906561668978052, guid: 6535af990657f664c9d5672f39c3466d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -253,7 +253,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 50004026231412506, guid: 6535af990657f664c9d5672f39c3466d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6535af990657f664c9d5672f39c3466d, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &606681156 stripped
