@@ -18,7 +18,7 @@ public class PlayerControl : MonoBehaviour {
     // Initialise player stats and elements
     void Start ()
     {
-        body = this.GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody2D>();
 	}
 
     // Used to handle all physics based events (e.g. movement)
@@ -30,7 +30,6 @@ public class PlayerControl : MonoBehaviour {
         // Get player rotation vector from controls
         lookVec = new Vector3(CrossPlatformInputManager.GetAxis("Horizontal_Aiming"), CrossPlatformInputManager.GetAxis("Vertical_Aiming"), 4096);
 
-        //body.AddForce(moveVec);
         if (lookVec.x != 0 && lookVec.y != 0)
             transform.rotation = Quaternion.LookRotation(lookVec, Vector3.back);
         body.velocity = moveVec;
