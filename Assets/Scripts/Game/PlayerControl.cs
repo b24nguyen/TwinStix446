@@ -6,6 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerControl : MonoBehaviour {
 
     Rigidbody2D body;
+
     public float speed = 5;
     public Vector2 moveVec;
     public Vector3 lookVec;
@@ -14,6 +15,11 @@ public class PlayerControl : MonoBehaviour {
     public Transform shotSpawn;
     public float fireRate;
     private float shotCooldown;
+
+    public float knockback;
+    public float knockbackLength;
+    private float knockbackCount;
+    private Vector2 knockbackVec;
 
     // Initialise player stats and elements
     void Start ()
@@ -32,7 +38,16 @@ public class PlayerControl : MonoBehaviour {
 
         if (lookVec.x != 0 && lookVec.y != 0)
             transform.rotation = Quaternion.LookRotation(lookVec, Vector3.back);
-        body.velocity = moveVec;
+
+        if (knockbackCount <= 0)
+        {
+            body.velocity = moveVec;
+        }
+        else
+        {
+            body.velocity = knockbackVec;
+            knockbackCount -= Time.deltaTime;
+        }
 	}
 
     // Used to handle any other update events for the player
@@ -46,5 +61,32 @@ public class PlayerControl : MonoBehaviour {
             // Create a shot object
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
         }
+    }
+
+    public void ApplyKnockback(Vector3 pos)
+    {
+        float knockbackX, knockbackY;
+
+        knockbackCount = knockbackLength;
+
+        if (pos.x < transform.position.x)
+        {
+            knockbackX = knockback;
+        }
+        else
+        {
+            knockbackX = -knockback;
+        }
+
+        if (pos.y < transform.position.y)
+        {
+            knockbackY = knockback;
+        }
+        else
+        {
+            knockbackY = -knockback;
+        }
+
+        knockbackVec = new Vector2(knockbackX, knockbackY);
     }
 }

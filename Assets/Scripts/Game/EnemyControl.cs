@@ -37,11 +37,12 @@ public class EnemyControl : MonoBehaviour {
 
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (col.gameObject.tag == "Player")
+        if (other.tag == "Player")
         {
-            col.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damage);
+            other.GetComponent<PlayerHealthManager>().HurtPlayer(damage);
+            other.GetComponent<PlayerControl>().ApplyKnockback(transform.position);
         }
     }
 }
