@@ -27,5 +27,9 @@ public class BoltController : MonoBehaviour {
             other.GetComponent<EnemyHealthManager>().TakeDamage(damage);
             Destroy(gameObject);
         }
+        if (other.tag == "Environment")
+        {
+            Destroy(gameObject);
+        }
     }
 }
