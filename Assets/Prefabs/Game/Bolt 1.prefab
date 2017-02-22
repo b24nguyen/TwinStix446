@@ -22,10 +22,8 @@ GameObject:
   - component: {fileID: 114562471979874896}
   - component: {fileID: 50612302285502700}
   - component: {fileID: 70346931573966456}
-  - component: {fileID: 114217580265217362}
-  - component: {fileID: 114897642385691606}
   m_Layer: 0
-  m_Name: Bolt
+  m_Name: Bolt 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +119,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1877297488617838}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -142,23 +140,11 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
---- !u!114 &114217580265217362
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877297488617838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b2af154cce6c3448bfb2fa8093d01c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
 --- !u!114 &114562471979874896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,14 +158,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 5
---- !u!114 &114897642385691606
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877297488617838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7767d1cb0c055c34da8974b6f1800186, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  timeToLive: 1

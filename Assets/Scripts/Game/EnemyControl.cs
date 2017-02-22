@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyControl : MonoBehaviour {
 
     public Transform target;
+    public int damage;
     public float speed = 3;
 
     // Initialise enemy stats and elements
@@ -34,5 +35,13 @@ public class EnemyControl : MonoBehaviour {
     void Update ()
     {
 
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            col.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damage);
+        }
     }
 }

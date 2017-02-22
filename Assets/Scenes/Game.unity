@@ -284,9 +284,10 @@ GameObject:
   - component: {fileID: 1201290070}
   - component: {fileID: 1201290069}
   - component: {fileID: 1201290068}
+  - component: {fileID: 1201290073}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,7 +304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 606681156}
-  speed: 3
+  damage: 1
+  speed: 2
 --- !u!58 &1201290069
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -386,11 +388,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1201290073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1201290067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57933fa22f5bb544482388c220f74f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!1 &1276338109 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1545145807829738, guid: c5159add65dcde8468c10f87495e869f,
     type: 2}
   m_PrefabInternal: {fileID: 1736820257}
+--- !u!114 &1276338114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1276338109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a0a6d39efc45448a0abb257cf39d9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  maxPlayerHealth: 20
 --- !u!1 &1296893737
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +440,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1296893737}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: 0}
+  m_LocalPosition: {x: 0, y: 1.83, z: 0}
   m_LocalScale: {x: 3.3546634, y: 3.3546634, z: 3.3546634}
   m_Children: []
   m_Father: {fileID: 606681156}
@@ -633,14 +660,18 @@ Prefab:
     - target: {fileID: 114596987311284326, guid: c5159add65dcde8468c10f87495e869f,
         type: 2}
       propertyPath: fireRate
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114596987311284326, guid: c5159add65dcde8468c10f87495e869f,
         type: 2}
       propertyPath: shot
       value: 
-      objectReference: {fileID: 1757038119371508, guid: 766bc7cebfd9a8a4fa99ed40f2068b27,
+      objectReference: {fileID: 1877297488617838, guid: 3e31b95fca4736047a1cfb01898f21a3,
         type: 2}
+    - target: {fileID: 1545145807829738, guid: c5159add65dcde8468c10f87495e869f, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5159add65dcde8468c10f87495e869f, type: 2}
   m_IsPrefabParent: 0

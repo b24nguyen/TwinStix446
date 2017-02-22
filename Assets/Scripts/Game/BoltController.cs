@@ -20,13 +20,12 @@ public class BoltController : MonoBehaviour {
         transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
-    void OnTriggerEvent2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")
         {
             other.GetComponent<EnemyHealthManager>().TakeDamage(damage);
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 }
