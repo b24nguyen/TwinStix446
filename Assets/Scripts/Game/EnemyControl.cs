@@ -11,7 +11,7 @@ public class EnemyControl : MonoBehaviour {
     // Initialise enemy stats and elements
     void Start ()
     {
-		
+        target = GameObject.Find("Player").transform;
 	}
 
     // Used to handle all physics based events (e.g. movement)
