@@ -8,12 +8,15 @@ public class PlayerHealthManager : MonoBehaviour {
     public int health;
     public int maxPlayerHealth;
     Slider healthSlider;
+    Text healthText;
     
     // Use this for initialization
 	void Start ()
     {
         health = maxPlayerHealth;
         healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
+        healthText = GameObject.Find("HealthText").GetComponent<Text>();
+        healthText.text = "HP: " + health;
     }
 	
 	// Update is called once per frame
@@ -26,6 +29,7 @@ public class PlayerHealthManager : MonoBehaviour {
     {
         health -= damage;
         if (health <= 0) health = 0;
+        healthText.text =  "HP: " + health;
         // Set healthSlider.value to float within [0,1]
         healthSlider.value = System.Convert.ToSingle(health) / maxPlayerHealth;
     }
