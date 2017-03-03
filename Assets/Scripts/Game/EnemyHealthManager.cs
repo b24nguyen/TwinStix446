@@ -5,11 +5,18 @@ using UnityEngine;
 public class EnemyHealthManager : MonoBehaviour {
 
     public int health;
+    public int scoreCount;
+    private GameController scoreBoardController;
 
 	// Use this for initialization
 	void Start ()
     {
-		
+        // Looking for specific instance of GameController object
+        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+        if (gameControllerObject != null)
+        {
+            scoreBoardController = gameControllerObject.GetComponent<GameController>();
+        }
 	}
 	
 	// Update is called once per frame
@@ -17,6 +24,8 @@ public class EnemyHealthManager : MonoBehaviour {
     {
 		if (health <= 0)
         {
+            // Updating score once enemy dies
+            scoreBoardController.addScore(scoreCount);
             Destroy(gameObject);
         }
 	}
