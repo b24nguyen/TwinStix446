@@ -11,12 +11,21 @@ public class EnemyHealthManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        health = 1;
+        scoreCount = 10;
         // Looking for specific instance of GameController object
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         if (gameControllerObject != null)
         {
-            scoreBoardController = gameControllerObject.GetComponent<GameController>();
+            scoreBoardController = gameControllerObject.GetComponent <GameController>();
+            
         }
+
+        if (scoreBoardController == null)
+        {
+            Debug.Log("THERE WAS AN ERROR");
+        }
+
 	}
 	
 	// Update is called once per frame
@@ -25,8 +34,8 @@ public class EnemyHealthManager : MonoBehaviour {
 		if (health <= 0)
         {
             // Updating score once enemy dies
-            scoreBoardController.addScore(scoreCount);
             Destroy(gameObject);
+            scoreBoardController.addScore(scoreCount);
         }
 	}
 
