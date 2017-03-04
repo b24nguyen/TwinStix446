@@ -1056,6 +1056,12 @@ Prefab:
       propertyPath: knockbackLength
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 212159324693295862, guid: c5159add65dcde8468c10f87495e869f,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c5458510f250c23498a6e77885db9474,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5159add65dcde8468c10f87495e869f, type: 2}
   m_IsPrefabParent: 0
