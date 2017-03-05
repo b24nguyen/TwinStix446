@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  scoreCount: 0
 --- !u!212 &212036177936521094
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -150,7 +151,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8ea08c6657916e04780dd96da9cfff27, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a59829ba75c8fe74a9224817ce5011ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
