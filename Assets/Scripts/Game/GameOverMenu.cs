@@ -10,10 +10,12 @@ public class GameOverMenu : MonoBehaviour {
     Text rankColumn, scoreColumn, nameColumn;
     GameObject player, highScoreBoard, enterNamePanel;
     PlayerHealthManager playerHealthManager;
+    GameController gameController;
     Canvas GameOverMenuCanvas;
 
     // Use this for initialization
     void Start () {
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
         highScoreBoard = GameObject.Find("HighScoreBoard");
         enterNamePanel = GameObject.Find("EnterNamePanel");
         // Disable the gameover menu
@@ -35,8 +37,8 @@ public class GameOverMenu : MonoBehaviour {
             // Disable rendering the HighScoreBoard and the enter name panel
             highScoreBoard.SetActive(false);
             enterNamePanel.SetActive(false);
-            int getHS = 12; //replace this with the actual getHS
-            CheckIfHighScore(getHS);
+
+            CheckIfHighScore(gameController.score);
         }
 	}
 
@@ -103,7 +105,7 @@ public class GameOverMenu : MonoBehaviour {
 
     public void ClickEnterName()
     {
-        int getHS = 12; //replace this with the actual getHS
+        int insertHS = gameController.score;
 
         InputField nameInputField = GameObject.Find("NameInputField").GetComponent<InputField>();
         string name = nameInputField.text;
@@ -112,16 +114,16 @@ public class GameOverMenu : MonoBehaviour {
         for (int i = 0; i < NUM_HIGHSCORES; i++)
         {
             scoreArray[i] = PlayerPrefs.GetString("HighScore" + (i + 1)).Split(',');
-            if (getHS > System.Int32.Parse(scoreArray[i][0]))
+            if (insertHS > System.Int32.Parse(scoreArray[i][0]))
             {
                 int tempScore = System.Int32.Parse(scoreArray[i][0]);
                 string tempName = scoreArray[i][1];
-                scoreArray[i][0] = getHS.ToString();
+                scoreArray[i][0] = insertHS.ToString();
                 scoreArray[i][1] = name;
 
                 PlayerPrefs.SetString("HighScore" + (i+1), scoreArray[i][0] +"," + scoreArray[i][1]);
 
-                getHS = tempScore;
+                insertHS = tempScore;
                 name = tempName;
             }
         }
