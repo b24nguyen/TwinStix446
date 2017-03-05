@@ -19,4 +19,9 @@ public class ButtonEvents : MonoBehaviour {
     {
         SceneManager.LoadScene("Game");
     }
+
+    public void ClickHighScores()
+    {
+        SceneManager.LoadScene("HighScores");
+    }
 }
