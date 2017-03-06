@@ -25,6 +25,7 @@ public class BoltController : MonoBehaviour {
         if (other.tag == "Enemy")
         {
             other.GetComponent<EnemyHealthManager>().TakeDamage(damage);
+            other.GetComponent<EnemyControl>().ApplyStagger(transform.position);
             Destroy(gameObject);
         }
         else if (other.tag == "Environment")

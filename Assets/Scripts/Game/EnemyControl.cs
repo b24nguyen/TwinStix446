@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class EnemyControl : MonoBehaviour {
 
+    Rigidbody2D body;
+
     public Transform target;
     public int damage;
-    public float speed = 3;
+    public float speed;
+
+    public float stagger;
+    public float staggerLength;
+    private float staggerCount;
+    private Vector2 staggerVec;
 
     // Initialise enemy stats and elements
     void Start ()
     {
         target = GameObject.Find("Player").transform;
-	}
+        body = GetComponent<Rigidbody2D>();
+    }
 
     // Used to handle all physics based events (e.g. movement)
     void FixedUpdate()
@@ -26,8 +34,16 @@ public class EnemyControl : MonoBehaviour {
             // Apply roation vector
             transform.rotation = Quaternion.LookRotation(lookVec, Vector3.back);
 
-            // Move towards the target's current location
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            if (staggerCount <= 0)
+            {
+                // Move towards the target's current location
+                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            }
+            else
+            {
+                body.velocity = staggerVec;
+                staggerCount -= Time.deltaTime;
+            }
         }
     }
 
@@ -44,5 +60,32 @@ public class EnemyControl : MonoBehaviour {
             other.GetComponent<PlayerHealthManager>().HurtPlayer(damage);
             other.GetComponent<PlayerControl>().ApplyKnockback(transform.position);
         }
+    }
+
+    public void ApplyStagger(Vector3 pos)
+    {
+        float staggerX, staggerY;
+
+        staggerCount = staggerLength;
+
+        if (pos.x < transform.position.x)
+        {
+            staggerX = stagger;
+        }
+        else
+        {
+            staggerX = -stagger;
+        }
+
+        if (pos.y < transform.position.y)
+        {
+            staggerY = stagger;
+        }
+        else
+        {
+            staggerY = -stagger;
+        }
+
+        staggerVec = new Vector2(staggerX, staggerY);
     }
 }

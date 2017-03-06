@@ -11,8 +11,6 @@ public class EnemyHealthManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        health = 1;
-        scoreCount = 10;
         // Looking for specific instance of GameController object
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         if (gameControllerObject != null)
