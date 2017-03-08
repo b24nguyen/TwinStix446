@@ -31,5 +31,7 @@ public class BoltController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+        else if (other.tag == "Env_shootThrough")
+        { }
     }
 }
