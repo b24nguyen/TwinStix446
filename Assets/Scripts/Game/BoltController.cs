@@ -27,11 +27,11 @@ public class BoltController : MonoBehaviour {
             other.GetComponent<EnemyHealthManager>().TakeDamage(damage);
             Destroy(gameObject);
         }
-        else if (other.tag == "Environment")
+        else if (other.tag == "EnvHard") // Bolts cannot pass through EnvHard
         {
             Destroy(gameObject);
         }
-        else if (other.tag == "Env_shootThrough")
+        else if (other.tag == "EnvSoft") // Bolts pass through EnvSoft
         { }
     }
 }

@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Environment
-  - Env_shootThrough
+  - EnvHard
+  - EnvSoft
   layers:
   - Default
   - TransparentFX
