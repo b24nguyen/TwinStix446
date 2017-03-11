@@ -21,17 +21,16 @@ public class BoltController : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Enemy")
-        {
-            other.GetComponent<EnemyHealthManager>().TakeDamage(damage);
-            Destroy(gameObject);
-        }
-        else if (other.tag == "EnvHard") // Bolts cannot pass through EnvHard
-        {
-            Destroy(gameObject);
-        }
-        else if (other.tag == "EnvSoft") // Bolts pass through EnvSoft
-        { }
+    {    
+	switch (other.tag) 
+	{
+		case "Enemy":
+			other.GetComponent<EnemyHealthManager>().TakeDamage(damage);
+		case "EnvHard":
+			Destroy(gameObject);
+		case "EnvSoft":
+		case default:
+			break;
+	}
     }
 }
