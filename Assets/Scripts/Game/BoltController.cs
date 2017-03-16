@@ -21,16 +21,20 @@ public class BoltController : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    {    
-	switch (other.tag) 
-	{
-		case "Enemy":
-			other.GetComponent<EnemyHealthManager>().TakeDamage(damage);
-		case "EnvHard":
-			Destroy(gameObject);
-		case "EnvSoft":
-		case default:
-			break;
-	}
+    {
+        switch (other.tag)
+        {
+		    case "Enemy":
+			    other.GetComponent<EnemyHealthManager>().TakeDamage(damage);
+                Destroy(gameObject);
+                break;
+            case "EnvHard":
+			    Destroy(gameObject);
+                break;
+            case "EnvSoft":
+                break;
+		    default:
+			    break;
+	    }
     }
 }
