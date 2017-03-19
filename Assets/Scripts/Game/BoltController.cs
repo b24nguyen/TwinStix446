@@ -21,7 +21,7 @@ public class BoltController : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other)
-
+    { 
         switch (other.tag)
         {
 		    case "Enemy":
