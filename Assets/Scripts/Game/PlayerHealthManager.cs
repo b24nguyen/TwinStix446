@@ -7,6 +7,7 @@ public class PlayerHealthManager : MonoBehaviour {
 
     public int health;
     public int maxPlayerHealth;
+    private bool powerMode = false;
     Slider healthSlider;
     Text healthText;
     
@@ -25,6 +26,11 @@ public class PlayerHealthManager : MonoBehaviour {
         if (health > maxPlayerHealth) health = maxPlayerHealth;
 	}
 
+    public bool GetPowerMode()
+    {
+        return powerMode;
+    }
+
     public void HurtPlayer(int damage)
     {
         health -= damage;
@@ -32,5 +38,20 @@ public class PlayerHealthManager : MonoBehaviour {
         healthText.text =  "HP: " + health;
         // Set healthSlider.value to float within [0,1]
         healthSlider.value = System.Convert.ToSingle(health) / maxPlayerHealth;
+    }
+
+    public void FoundPowerOrb()
+    {
+        // If player finds another powerOrb before last one was disabled
+        if (powerMode) { CancelInvoke("DisablePowerMode");  }
+        powerMode = true;
+
+        // Disable the power orb in 10 seconds
+        Invoke("DisablePowerMode", 10.0f);
+    }
+
+    void DisablePowerMode()
+    {
+        powerMode = false;
     }
 }
