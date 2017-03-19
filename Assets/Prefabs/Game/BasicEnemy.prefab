@@ -106,7 +106,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   damage: 1
-  speed: 2
+  speed: 3
+  stagger: 1
+  staggerLength: 0.25
 --- !u!114 &114655054214351080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57933fa22f5bb544482388c220f74f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  scoreCount: 0
+  health: 5
+  scoreCount: 10
 --- !u!212 &212036177936521094
 SpriteRenderer:
   m_ObjectHideFlags: 1
