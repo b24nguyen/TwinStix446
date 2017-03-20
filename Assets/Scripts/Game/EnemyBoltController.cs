@@ -22,14 +22,19 @@ public class EnemyBoltController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        switch (other.tag)
         {
-            other.GetComponent<PlayerHealthManager>().HurtPlayer(damage);
-            Destroy(gameObject);
-        }
-        else if (other.tag == "Environment")
-        {
-            Destroy(gameObject);
+            case "Player":
+                other.GetComponent<PlayerHealthManager>().HurtPlayer(damage);
+                Destroy(gameObject);
+                break;
+            case "EnvHard":
+                Destroy(gameObject);
+                break;
+            case "EnvSoft":
+                break;
+            default:
+                break;
         }
     }
 }
