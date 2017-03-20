@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  scoreCount: 20
+  scoreCount: 50
 --- !u!114 &114871673727165366
 MonoBehaviour:
   m_ObjectHideFlags: 1
