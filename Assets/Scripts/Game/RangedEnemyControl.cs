@@ -45,11 +45,11 @@ public class RangedEnemyControl : MonoBehaviour
 
             if (staggerCount <= 0)
             {
-                if (isRunning)                  // Player is closing in on enemy, run away!
-                {
-                    transform.position = Vector2.MoveTowards(-transform.position, -target.position, speed * Time.deltaTime);
-                }
-                else if (isPlayerInRange)       // Player is within range to shoot at, so shoot at them 
+                //if (isRunning)                  // Player is closing in on enemy, run away!
+                //{
+                    //transform.position = Vector2.MoveTowards(-transform.position, -target.position, speed * Time.deltaTime);
+                //}
+                if (isPlayerInRange)       // Player is within range to shoot at, so shoot at them 
                 {
                     if (Time.time > shotCooldown)       // Shoot at the player if able, otherwise stay still while reloading
                     {
