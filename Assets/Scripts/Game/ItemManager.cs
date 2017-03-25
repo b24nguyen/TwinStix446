@@ -21,8 +21,15 @@ public class ItemManager : MonoBehaviour {
     {
         if (enemyType.Contains("BasicEnemy"))
         {
-            // 90% Chance a BasicEnemy does not spawn item
+            // 10% Chance a BasicEnemy spawns an item
             if (Random.Range(0, 10) > 1) { return; }
+            // TODO: reduce range to worse items rather than all items
+            int itemIndex = Mathf.FloorToInt(Random.Range(0, items.Length));
+            Instantiate(items[itemIndex], position, Quaternion.identity);
+        } else if (enemyType.Contains("RangedEnemy"))
+        {
+            // 20% Chance a RangedEnemy spawns an item
+            if (Random.Range(0, 10) > 2) { return; }
             // TODO: reduce range to worse items rather than all items
             int itemIndex = Mathf.FloorToInt(Random.Range(0, items.Length));
             Instantiate(items[itemIndex], position, Quaternion.identity);

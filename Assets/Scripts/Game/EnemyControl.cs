@@ -58,16 +58,8 @@ public class EnemyControl : MonoBehaviour {
         if (other.tag == "Player")
         {
             PlayerHealthManager playerHealthManager = other.GetComponent<PlayerHealthManager>();
-            if (playerHealthManager.GetPowerMode())
-            {
-                // Enemy dies if in power mode
-                this.GetComponent<EnemyHealthManager>().health = 0;
-            } else
-            {
-                playerHealthManager.HurtPlayer(damage);
-                other.GetComponent<PlayerControl>().ApplyKnockback(transform.position);
-            }
-            
+            playerHealthManager.HurtPlayer(damage);
+            other.GetComponent<PlayerControl>().ApplyKnockback(transform.position);
         }
     }
 
