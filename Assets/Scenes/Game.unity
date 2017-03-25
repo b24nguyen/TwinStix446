@@ -2947,6 +2947,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   maxPlayerHealth: 20
+  playerReg: {fileID: 21300000, guid: c5458510f250c23498a6e77885db9474, type: 3}
+  playerPow: {fileID: 21300000, guid: 8921116fc4f0230478deecafea0f2cb1, type: 3}
 --- !u!1 &1296893737
 GameObject:
   m_ObjectHideFlags: 0

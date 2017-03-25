@@ -6,6 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerControl : MonoBehaviour {
 
     Rigidbody2D body;
+    PlayerHealthManager playerHealthManager;
 
     public float speed = 5;
     public Vector2 moveVec;
@@ -25,6 +26,7 @@ public class PlayerControl : MonoBehaviour {
     void Start ()
     {
         body = GetComponent<Rigidbody2D>();
+        playerHealthManager = GetComponent<PlayerHealthManager>();
 	}
 
     // Used to handle all physics based events (e.g. movement)
@@ -65,6 +67,8 @@ public class PlayerControl : MonoBehaviour {
 
     public void ApplyKnockback(Vector3 pos)
     {
+        if (playerHealthManager.GetPowerMode()) { return; }
+
         float knockbackX, knockbackY;
 
         knockbackCount = knockbackLength;
@@ -88,5 +92,13 @@ public class PlayerControl : MonoBehaviour {
         }
 
         knockbackVec = new Vector2(knockbackX, knockbackY);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Enemy" && playerHealthManager.GetPowerMode())
+        {
+            other.GetComponent<EnemyHealthManager>().TakeDamage(999);
+        }
     }
 }
