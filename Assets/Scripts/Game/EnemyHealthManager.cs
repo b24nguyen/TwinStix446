@@ -48,4 +48,9 @@ public class EnemyHealthManager : MonoBehaviour {
     {
         health -= damage;
     }
+
+    public void Kill()
+    {
+        health = 0;
+    }
 }

@@ -98,7 +98,7 @@ public class PlayerControl : MonoBehaviour {
     {
         if (other.tag == "Enemy" && playerHealthManager.GetPowerMode())
         {
-            other.GetComponent<EnemyHealthManager>().TakeDamage(999);
+            other.GetComponent<EnemyHealthManager>().Kill();
         }
     }
 }
