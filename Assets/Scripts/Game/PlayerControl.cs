@@ -15,19 +15,25 @@ public class PlayerControl : MonoBehaviour {
     public GameObject shot;
     public Transform shotSpawn;
     public float fireRate;
+    private float fireRateDefault;
+    public Sprite playerReg, playerSpeedOrb;
     private float shotCooldown;
+    private bool speedMode = false;
+    
 
     public float knockback;
     public float knockbackLength;
     private float knockbackCount;
     private Vector2 knockbackVec;
-
+    private SpriteRenderer spriteRenderer;
     // Initialise player stats and elements
     void Start ()
     {
         body = GetComponent<Rigidbody2D>();
         playerHealthManager = GetComponent<PlayerHealthManager>();
-	}
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        fireRateDefault = fireRate;
+    }
 
     // Used to handle all physics based events (e.g. movement)
 	void FixedUpdate ()
@@ -92,6 +98,25 @@ public class PlayerControl : MonoBehaviour {
         }
 
         knockbackVec = new Vector2(knockbackX, knockbackY);
+    }
+
+    public void FoundSpeedOrb()
+    {
+        // If player finds another speedOrb before last one was disabled
+        if (speedMode) { CancelInvoke("DisableSpeedMode"); }
+        speedMode = true;
+        spriteRenderer.sprite = playerSpeedOrb;
+        // increase firerate by 3x
+        fireRate = fireRateDefault / 3;
+        // Disable the speed orb in 10 seconds
+        Invoke("DisableSpeedMode", 10.0f);
+    }
+
+    public void DisableSpeedMode()
+    {
+        speedMode = false;
+        spriteRenderer.sprite = playerReg;
+        fireRate = fireRateDefault;
     }
 
     void OnTriggerEnter2D(Collider2D other)

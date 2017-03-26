@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerOrbController : OrbController {
+public class SpeedOrbController : OrbController {
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
             // Update power mode state and destroy the orb
-            other.GetComponent<PlayerHealthManager>().FoundPowerOrb();
+            other.GetComponent<PlayerControl>().FoundSpeedOrb();
             Destroy(gameObject);
         }
     }
+
 }
