@@ -16,7 +16,8 @@ public class PlayerControl : MonoBehaviour {
     public Transform shotSpawn;
     public float fireRate;
     private float fireRateDefault;
-    public Sprite playerReg, playerSpeedOrb;
+    private UIOrbIndicator speedIndicator;
+    public Sprite playerReg, powerUp;
     private float shotCooldown;
     private bool speedMode = false;
     
@@ -32,6 +33,7 @@ public class PlayerControl : MonoBehaviour {
         body = GetComponent<Rigidbody2D>();
         playerHealthManager = GetComponent<PlayerHealthManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        speedIndicator = GameObject.Find("speedMode").GetComponent<UIOrbIndicator>();
         fireRateDefault = fireRate;
     }
 
@@ -105,9 +107,10 @@ public class PlayerControl : MonoBehaviour {
         // If player finds another speedOrb before last one was disabled
         if (speedMode) { CancelInvoke("DisableSpeedMode"); }
         speedMode = true;
-        spriteRenderer.sprite = playerSpeedOrb;
+        spriteRenderer.sprite = powerUp;
         // increase firerate by 3x
         fireRate = fireRateDefault / 3;
+        speedIndicator.activate();
         // Disable the speed orb in 10 seconds
         Invoke("DisableSpeedMode", 10.0f);
     }
@@ -115,8 +118,14 @@ public class PlayerControl : MonoBehaviour {
     public void DisableSpeedMode()
     {
         speedMode = false;
-        spriteRenderer.sprite = playerReg;
+        if (!playerHealthManager.GetPowerMode()) spriteRenderer.sprite = playerReg;
+        speedIndicator.deactivate();
         fireRate = fireRateDefault;
+    }
+
+    public bool GetSpeedMode()
+    {
+        return speedMode;
     }
 
     void OnTriggerEnter2D(Collider2D other)

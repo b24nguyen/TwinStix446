@@ -10,16 +10,20 @@ public class PlayerHealthManager : MonoBehaviour {
     private bool powerMode = false;
 
     public Sprite playerReg, playerPow;
+    private UIOrbIndicator powerIndicator;
     private SpriteRenderer spriteRenderer;
     private Slider healthSlider;
     private Text healthText;
+    private PlayerControl playerControl;
     
     // Use this for initialization
-	void Start ()
+    void Start ()
     {
         health = maxPlayerHealth;
         healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
         healthText = GameObject.Find("HealthText").GetComponent<Text>();
+        powerIndicator = GameObject.Find("powerMode").GetComponent<UIOrbIndicator>();
+        playerControl = GetComponent<PlayerControl>();
         healthText.text = "HP: " + health;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -52,7 +56,7 @@ public class PlayerHealthManager : MonoBehaviour {
         if (powerMode) { CancelInvoke("DisablePowerMode");  }
         powerMode = true;
         spriteRenderer.sprite = playerPow;
-
+        powerIndicator.activate();
         // Disable the power orb in 10 seconds
         Invoke("DisablePowerMode", 10.0f);
     }
@@ -60,6 +64,7 @@ public class PlayerHealthManager : MonoBehaviour {
     void DisablePowerMode()
     {
         powerMode = false;
-        spriteRenderer.sprite = playerReg;
+        if (!playerControl.GetSpeedMode()) spriteRenderer.sprite = playerReg;
+        powerIndicator.deactivate();
     }
 }
